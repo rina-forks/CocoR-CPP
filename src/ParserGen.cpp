@@ -472,7 +472,7 @@ void ParserGen::InitSets() {
 }
 
 void escapeChar(FILE* file, wchar_t c, const wchar_t* escapes) {
-	if (c > 0xffL || c < 0x20L) {
+	if (c > 0xffL || c < 0x20L || c == _SC('#')) { // c == _SC('-') ||
 		fwprintf(file, _SC("\\u%04lx"), (long)c);
 		return;
 	}
@@ -482,7 +482,7 @@ void escapeChar(FILE* file, wchar_t c, const wchar_t* escapes) {
 }
 
 int ParserGen::GenCodeRREBNF (const Node *p, int depth) {
-	      const wchar_t* escapes = _SC("[]\\-#");
+	      const wchar_t* escapes = _SC("[]\\");
         int rc = 0, loop_count = 0;
         const Node *p2;
         while (p != NULL) {
