@@ -482,7 +482,7 @@ void escapeChar(FILE* file, wchar_t c, const wchar_t* escapes) {
 }
 
 int ParserGen::GenCodeRREBNF (const Node *p, int depth) {
-	      const wchar_t* escapes = _SC("[]\\");
+	      const wchar_t* escapes = _SC("[]\\-#");
         int rc = 0, loop_count = 0;
         const Node *p2;
         while (p != NULL) {
