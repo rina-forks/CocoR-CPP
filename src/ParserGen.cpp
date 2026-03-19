@@ -500,7 +500,7 @@ int ParserGen::GenCodeRREBNF (const Node *p, int depth) {
                         case NodeType::alt: {
 				bool need_close_alt = false;
 				if(depth > 0 || loop_count || p->next) {
-					fputws(" (", gen);
+					fputws(_SC(" ("), gen);
 					need_close_alt = true;
 				}
                                 p2 = p;

@@ -536,7 +536,7 @@ BitArray* Tab::First(const Node *p) {
 	if (ddt[3]) {
 		fputws(_SC("\n"), trace);
 		if (p != NULL) fwprintf(trace, _SC("First: node = %d\tline = %d\tcol = %d\ttype = %s\t%s\n"), p->n,
-                        p->line, p->col, this->nTyp[p->typ], p->sym ? p->sym->name : "");
+                        p->line, p->col, this->nTyp[p->typ], p->sym ? p->sym->name : _SC(""));
 		else fputws(_SC("First: node = null\n"), trace);
 		fwprintf(trace, _SC("         ")); PrintSet(fs, 10);
 	}
@@ -827,10 +827,10 @@ int Tab::Hex2Char(const wchar_t* s, int len) {
 		if ('0' <= ch && ch <= '9') val = 16 * val + (ch - '0');
 		else if ('a' <= ch && ch <= 'f') val = 16 * val + (10 + ch - 'a');
 		else if ('A' <= ch && ch <= 'F') val = 16 * val + (10 + ch - 'A');
-		else parser->SemErr(_SC("bad escape sequence in string or character"));
+		else parser->SemErr(_SC("bad escape sequence in string or character1"));
 	}
 	if (val > COCO_WCHAR_MAX) {/* pdt */
-		parser->SemErr(_SC("bad escape sequence in string or character"));
+		parser->SemErr(_SC("bad escape sequence in string or character2"));
 	}
 	return val;
 }
@@ -863,11 +863,11 @@ wchar_t* Tab::Unescape (const wchar_t* s) {
 					if (i + 6 <= coco_string_length(s)) {
 						buf.Append(Hex2Char(s +i+2, 4)); i += 6; break;
 					} else {
-						parser->SemErr(_SC("bad escape sequence in string or character"));
+						parser->SemErr(_SC("bad escape sequence in string or character3"));
 						i = coco_string_length(s); break;
 					}
 				default:
-						parser->SemErr(_SC("bad escape sequence in string or character"));
+						parser->SemErr(_SC("bad escape sequence in string or character4"));
 					i += 2; break;
 			}
 		} else {

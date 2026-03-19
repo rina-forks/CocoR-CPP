@@ -48,7 +48,7 @@ static wchar_t* DFACh(int ch, wchar_t_10 &format, bool noWrapper=false) {
 	if (ch < _SC(' ') || ch >= 127 || ch == _SC('\'') || ch == _SC('\\'))
 		coco_swprintf(format, SZWC10, _SC("%d"), (int) ch);
 	else {
-                const char *strFmt = noWrapper ? "'%" _CHFMT "'" : _SC("_SC('%") _CHFMT _SC("')");
+                const wchar_t *strFmt = noWrapper ? "'%" _CHFMT "'" : _SC("_SC('%") _CHFMT _SC("')");
 		coco_swprintf(format, SZWC10, strFmt, (int) ch);
         }
 	format[SZWC10] = _SC('\0');
