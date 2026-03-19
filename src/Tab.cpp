@@ -280,8 +280,8 @@ void Tab::Finish(Graph *g) {
 }
 
 void Tab::DeleteNodes() {
-        for(int i=0; i<nodes.Count; ++i) delete nodes[i];
-	nodes.Clear();
+        // for(int i=0; i<nodes.Count; ++i) delete nodes[i];
+	// nodes.Clear();
 	dummyNode = NewNode(NodeType::eps, (Symbol*)NULL, 0, 0);
 }
 
