@@ -472,12 +472,12 @@ void ParserGen::InitSets() {
 }
 
 void escapeChar(FILE* file, wchar_t c, const wchar_t* escapes) {
-	if (c > 0xffL || c < 0x20L || c == _SC('#')) { // c == _SC('-') ||
+	if (c > 0xffL || c < 0x20L || c == _SC('#') || wcschr(escapes, c) != NULL) { // c == _SC('-') ||
 		fwprintf(file, _SC("\\u%04lx"), (long)c);
 		return;
 	}
-	const wchar_t * escape = wcschr(escapes, c) != NULL ? _SC("\\") : _SC("");
-	fputws(escape, file);
+	// const wchar_t * escape = wcschr(escapes, c) != NULL ? _SC("\\") : _SC("");
+	// fputws(escape, file);
 	fputwc(c, file);
 }
 
